@@ -7,6 +7,11 @@
              mc:Ignorable="d"
              d:DesignHeight="800" d:DesignWidth="1000">
     <Grid>
-        <TextBlock TextAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Center"> ТЕМНЫЙ ПРИНЦ</TextBlock>
+        <Border CornerRadius="0,20,20,0" Margin="0,5,30,0">
+
+            <Image Source="/Assets/home_page.png"
+                   Stretch="Fill" />
+
+        </Border>
     </Grid>
 </UserControl>

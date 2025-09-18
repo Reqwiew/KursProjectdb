@@ -103,3 +103,4 @@ E:\KursProjectdb\KursProjectdb\obj\Debug\net9.0-windows\View\AcademicPlanView.g.
 E:\KursProjectdb\KursProjectdb\obj\Debug\net9.0-windows\View\AcademicPlanView.baml
 E:\KursProjectdb\KursProjectdb\obj\Debug\net9.0-windows\View\AcademyPerformanceView.g.cs
 E:\KursProjectdb\KursProjectdb\obj\Debug\net9.0-windows\View\AcademyPerformanceView.baml
+E:\KursProjectdb\KursProjectdb\obj\Debug\net9.0-windows\KursProjectdb.sourcelink.json

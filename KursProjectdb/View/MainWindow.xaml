@@ -61,7 +61,7 @@
 
                         <Grid>
 
-                            <Image Source="/Assets/img_customer.png"
+                            <Image Source="/Assets/img_order.png"
                                    Style="{StaticResource Image_Style}" />
 
                             <TextBlock Text="Предметы"
