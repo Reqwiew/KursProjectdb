@@ -1,0 +1,32 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:vm="clr-namespace:KursProjectdb.ViewModel"
+                    xmlns:view="clr-namespace:KursProjectdb.View">
+    <DataTemplate DataType="{x:Type vm:HomeViewModel}">
+        <view:Home/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type vm:SubjectViewModel}">
+        <view:SubjectView/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type vm:FacultyViewModel}">
+        <view:FacultyView/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type vm:TeacherViewModel}">
+        <view:TeacherView/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type vm:SpecializtionViewModel}">
+        <view:SpecializationsView/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type vm:GroupViewModel}">
+        <view:GroupView/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type vm:StudentViewModel}">
+        <view:StudentView/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type vm:AcademicPlanViewModel}">
+        <view:AcademicPlanView/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type vm:AcademyPerformanceViewModel}">
+        <view:AcademyPerformanceView/>
+    </DataTemplate>
+</ResourceDictionary>

@@ -1,0 +1,178 @@
+﻿<UserControl x:Class="KursProjectdb.View.AcademyPerformanceView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:KursProjectdb.View"
+             xmlns:vm="clr-namespace:KursProjectdb.ViewModel"
+             mc:Ignorable="d" 
+             d:DesignHeight="800" d:DesignWidth="1000"
+             Style="{StaticResource Page_Style}">
+    <UserControl.DataContext>
+        <vm:AcademyPerformanceViewModel />
+    </UserControl.DataContext>
+    <Grid Margin="15">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="20"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        
+        <!-- Заголовок -->
+        <TextBlock Text="Успеваемость студентов" 
+                   Grid.Row="0" Grid.Column="0"
+                   Grid.ColumnSpan="2"
+                   FontSize="20"
+                   FontWeight="Bold"
+                   HorizontalAlignment="Left" Margin="5,8" Padding="3"
+                   Style="{StaticResource Text_Style}"/>
+       
+        <!-- Поля ввода -->
+        <TextBlock Text="Выберите студента"
+                   Grid.Row="1" Grid.Column="0" Margin="5,8" Padding="3" 
+                   Style="{StaticResource Text_Style}"/>
+        
+        <TextBlock Text="Выберите учебный план"
+                   Grid.Row="2" Grid.Column="0" Margin="5,8" Padding="3" 
+                   Style="{StaticResource Text_Style}"/>
+        
+        <TextBlock Text="Выберите предмет"
+                   Grid.Row="3" Grid.Column="0" Margin="5,8" Padding="3" 
+                   Style="{StaticResource Text_Style}"/>
+                   
+        <TextBlock Text="Семестр"
+                   Grid.Row="4" Grid.Column="0" Margin="5,8" Padding="3" 
+                   Style="{StaticResource Text_Style}"/>
+        
+        <TextBlock Text="Оценка"
+                   Grid.Row="5" Grid.Column="0" Margin="5,8" Padding="3" 
+                   Style="{StaticResource Text_Style}"/>
+        
+        <TextBlock Text="Дата"
+                   Grid.Row="6" Grid.Column="0" Margin="5,8" Padding="3" 
+                   Style="{StaticResource Text_Style}"/>
+        
+        <TextBlock Text="Выберите группу"
+                   Grid.Row="7" Grid.Column="0" Margin="5,8" Padding="3" 
+                   Style="{StaticResource Text_Style}"/>
+       
+        <!-- Элементы управления -->
+        <Border CornerRadius="5" BorderThickness="1" BorderBrush="Black" 
+                Grid.Column="1" Grid.Row="1" Margin="5,8">
+            <ComboBox SelectedItem="{Binding SelectedStudent, Mode=TwoWay}"
+                      ItemsSource="{Binding StudentList}"
+                      DisplayMemberPath="FullName"
+                      SelectedValuePath="Id"/>
+        </Border>
+        
+        <Border CornerRadius="5" BorderThickness="1" BorderBrush="Black" 
+                Grid.Column="1" Grid.Row="2" Margin="5,8">
+            <ComboBox SelectedItem="{Binding SelectedAcademicPlan, Mode=TwoWay}"
+                      ItemsSource="{Binding AcademicPlanList}"
+                      DisplayMemberPath="SpecializationTitle"
+                      SelectedValuePath="Id"/>
+        </Border>
+        
+        <Border CornerRadius="5" BorderThickness="1" BorderBrush="Black" 
+                Grid.Column="1" Grid.Row="3" Margin="5,8">
+            <ComboBox SelectedItem="{Binding SelectedSubject, Mode=TwoWay}"
+                      ItemsSource="{Binding SubjectList}"
+                      DisplayMemberPath="SubjectTitle"
+                      SelectedValuePath="Id"/>
+        </Border>
+        
+        <Border CornerRadius="5" BorderThickness="1" BorderBrush="Black" 
+                Grid.Column="1" Grid.Row="4" Margin="5,8">
+            <TextBox Background="Transparent" Foreground="White" Padding="3"
+                     BorderThickness="0"
+                     Text="{Binding Path=CurrentAcademicPerformance.Term, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+        </Border>
+        
+        <Border CornerRadius="5" BorderThickness="1" BorderBrush="Black" 
+                Grid.Column="1" Grid.Row="5" Margin="5,8">
+            <TextBox Background="Transparent" Foreground="White" Padding="3"
+                     BorderThickness="0"
+                     Text="{Binding Path=CurrentAcademicPerformance.Rating, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+        </Border>
+        
+        <Border CornerRadius="5" BorderThickness="1" BorderBrush="Black" 
+                Grid.Column="1" Grid.Row="6" Margin="5,8">
+            <DatePicker Background="White" Foreground="Black" Padding="3"
+                        BorderThickness="0" 
+                        SelectedDate="{Binding Path=CurrentAcademicPerformance.DateOffset, Mode=TwoWay}"/>
+        </Border>
+        
+        <Border CornerRadius="5" BorderThickness="1" BorderBrush="Black" 
+                Grid.Column="1" Grid.Row="7" Margin="5,8">
+            <ComboBox SelectedItem="{Binding SelectedGroup, Mode=TwoWay}"
+                      ItemsSource="{Binding GroupList}"
+                      DisplayMemberPath="GroupName"
+                      SelectedValuePath="Id"/>
+        </Border>
+        
+        <!-- Кнопки -->
+        <StackPanel Orientation="Horizontal" Grid.Row="8" Grid.Column="1" Margin="5,8">
+            <Button Name="btnAdd" Content="Добавить" Padding="1" 
+                    Width="100"
+                    Height="30"
+                    Command="{Binding Path=SaveCommand}"
+                    Style="{StaticResource AddButtonStyle}"/>
+    
+            <Button Name="btnUpdate" Content="Обновить" Padding="1"
+                    Command="{Binding Path=UpdateCommand}"
+                    Width="100"
+                    Height="30"
+                    Style="{StaticResource UpdateButtonStyle}"/>
+    
+            <Button Name="btnDelete" Content="Удалить" Padding="1"
+                    Width="100"
+                    Height="30"
+                    Command="{Binding Path=DeleteCommand}"
+                    Style="{StaticResource DeleteButtonStyle}"/>
+        </StackPanel>
+        
+        <!-- Сообщения -->
+        <TextBlock Name="txtBlockMessage" Grid.Row="8" Grid.Column="0" Grid.ColumnSpan="2" Margin="5,8" Padding="3" 
+                   Foreground="White" Text="{Binding Path=Message}" 
+                   Style="{StaticResource Text_Style}"/>
+        
+        <!-- DataGrid -->
+        <DataGrid Name="dgAcademicPerformance" AutoGenerateColumns="False"
+                  Grid.Row="9" Grid.Column="0" Margin="5,8" Grid.ColumnSpan="2"
+                  ItemsSource="{Binding Path=AcademicPerformanceList, Mode=TwoWay}" 
+                  SelectedItem="{Binding CurrentAcademicPerformance}"
+                  Style="{StaticResource ModernDataGridStyle}">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="ID" Width="Auto" Binding="{Binding Path=Id}"/>
+                <DataGridTextColumn Header="Студент" Width="*" 
+                                    Binding="{Binding Path=StudentFullName}"/>
+                <DataGridTextColumn Header="Учебный план" Width="*" 
+                                    Binding="{Binding Path=AcademicPlanId}"/>
+                <DataGridTextColumn Header="Предмет" Width="*" 
+                                    Binding="{Binding Path=SubjectTitle}"/>
+                <DataGridTextColumn Header="Семестр" Width="Auto" 
+                                    Binding="{Binding Path=Term}"/>
+                <DataGridTextColumn Header="Оценка" Width="Auto" 
+                                    Binding="{Binding Path=Rating}"/>
+                <DataGridTextColumn Header="Дата" Width="Auto" 
+                                    Binding="{Binding Path=DateOffset, StringFormat=\{0:dd.MM.yyyy\}}"/>
+                <DataGridTextColumn Header="Группа" Width="*" 
+                                    Binding="{Binding Path=GroupName}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</UserControl>
